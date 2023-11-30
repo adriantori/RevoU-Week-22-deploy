@@ -1,7 +1,7 @@
 {
   "functions": [
     {
-      "source": "src",
+      "source": "functions",
       "codebase": "adriantori-w22",
       "ignore": [
         "venv",
