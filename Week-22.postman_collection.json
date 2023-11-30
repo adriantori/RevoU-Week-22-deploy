@@ -1,0 +1,176 @@
+{
+	"info": {
+		"name": "Combined APIs",
+		"_postman_id": "combined-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [{
+			"name": "Auth APIs",
+			"item": [{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [{
+							"key": "Content-Type",
+							"value": "application/json",
+							"type": "text"
+						}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"your_username\",\n\t\"password\": \"your_password\",\n\t\"role\": \"USER\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [{
+							"key": "Content-Type",
+							"value": "application/json",
+							"type": "text"
+						}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"your_username\",\n\t\"password\": \"your_password\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/login",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Todo APIs",
+			"item": [{
+					"name": "Create Todo",
+					"request": {
+						"method": "POST",
+						"header": [{
+							"key": "Content-Type",
+							"value": "application/json",
+							"type": "text"
+						}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"todoTask\": \"Your Task\",\n\t\"todoPriority\": \"HIGH\",\n\t\"todoDue\": \"28/11/2023\",\n\t\"todoAmount\": 5\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/todo/create",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"todo",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Todo",
+					"request": {
+						"method": "GET",
+						"header": [{
+							"key": "Authorization",
+							"value": "Bearer your_token",
+							"type": "text"
+						}],
+						"url": {
+							"raw": "{{base_url}}/todo/get",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"todo",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Todo",
+					"request": {
+						"method": "PUT",
+						"header": [{
+							"key": "Content-Type",
+							"value": "application/json",
+							"type": "text"
+						}, {
+							"key": "Authorization",
+							"value": "Bearer your_token",
+							"type": "text"
+						}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"todoTask\": \"Updated Task\",\n\t\"todoPriority\": \"MEDIUM\",\n\t\"todoDue\": \"29/11/2023\",\n\t\"todoAmount\": 10\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/todo/update/1",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"todo",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Todo",
+					"request": {
+						"method": "DELETE",
+						"header": [{
+							"key": "Authorization",
+							"value": "Bearer your_token",
+							"type": "text"
+						}],
+						"url": {
+							"raw": "{{base_url}}/todo/delete/1",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"todo",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
