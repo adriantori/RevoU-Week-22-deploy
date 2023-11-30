@@ -27,7 +27,6 @@ app.register_blueprint(todo_blueprint, url_prefix="")
 # with app.app_context():
 #     db_init()
 
-@https_fn.on_request(max_instances=1)
-def adriantori_w22(req: https_fn.Request) -> https_fn.Response:
-    with app.request_context(req.environ):
-        return app.full_dispatch_request()
+@app.route("/", methods=["GET"])
+def health_check():
+    return "OK", 200
