@@ -1,20 +1,14 @@
 {
   "functions": [
     {
-      "source": "functions",
-      "codebase": "default",
-      "runtime": "python310"
-    },
-    {
-      "source": "adriantori-w22",
+      "source": "src",
       "codebase": "adriantori-w22",
       "ignore": [
         "venv",
         ".git",
         "firebase-debug.log",
         "firebase-debug.*.log"
-      ],
-      "runtime": "python310"
+      ]
     }
   ]
 }
