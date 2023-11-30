@@ -25,7 +25,7 @@ def create_todo():
         todo = Todo(
             task=todo_task,
             priority=todo_priority,
-            due=datetime.strptime(todo_due, '%d/%m/%Y'),
+            due=datetime.strptime(todo_due, '%Y-%m-%d'),
             user_id=user_id
         )
 
@@ -38,7 +38,7 @@ def create_todo():
                 'id': todo.id,
                 'task': todo.task,
                 'priority': todo.priority.value,
-                'due': todo.due.strftime('%d/%m/%Y'),
+                'due': todo.due.strftime('%Y-%m-%d'),
             }
         }), 201
     except Exception as error:
@@ -56,9 +56,9 @@ def get_todo():
             return jsonify({'error_message': 'User not found'}), 404
 
         if user.role == UserRole.USER:
-            todos = Todo.query.filter_by(user_id=user_id, is_deleted=False).all()
+            todos = Todo.query.filter_by(user_id=user_id, is_deleted=False).order_by(None).all()
         elif user.role == UserRole.ADMIN:
-            todos = Todo.query.filter_by(is_deleted=False).all()
+            todos = Todo.query.filter_by(is_deleted=False).order_by(None).all()
         else:
             return jsonify({'error_message': 'Invalid role'}), 400
 
@@ -67,7 +67,7 @@ def get_todo():
                 'id': todo.id,
                 'task': todo.task,
                 'priority': todo.priority.value,
-                'due': todo.due.strftime('%d/%m/%Y'),
+                'due': todo.due.strftime('%Y-%m-%d'),  
                 'user_id': todo.user_id,
             } for todo in todos
         ]
@@ -100,7 +100,7 @@ def update_todo(todo_id):
 
         todo.task = todo_task
         todo.priority = todo_priority
-        todo.due = datetime.strptime(todo_due, '%d/%m/%Y')
+        todo.due = datetime.strptime(todo_due, '%Y-%m-%d')
 
         db.session.commit()
 
